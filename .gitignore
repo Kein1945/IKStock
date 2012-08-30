@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 app/bootstrap.php.cache
 app/cache/*
@@ -5,6 +6,8 @@ app/logs/*
 bin
 LICENSE
 UPGRADE.md
+=======
+>>>>>>> fd98a791c12fb8dbbf4906029e380b67d39ac464
 # Bootstrap
 app/bootstrap*
 
@@ -17,6 +20,7 @@ web/bundles/*
 
 # Configuration files
 app/config/parameters.ini
+<<<<<<< HEAD
 
 # Composer
 composer.phar
@@ -24,3 +28,5 @@ composer.lock
 
 # ide
 .idea
+=======
+>>>>>>> fd98a791c12fb8dbbf4906029e380b67d39ac464
