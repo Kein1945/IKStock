@@ -1,0 +1,12 @@
+<li>
+    <a href="{{ path('stock_category_show', { 'id': category.id }) }}">{{ category.name }}</a>
+    <div>
+    </div>
+    {% if category.children %}
+        <ul>
+            {% for child in category.children %}
+                {% include 'IKStockBundle:Category:list-item.html.twig' with {category: child}%}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</li>

@@ -1,0 +1,22 @@
+{% extends 'IKStockBundle::fluid.html.twig' %}
+
+{% block page_title %}
+Category creation / Stock
+{% endblock page_title %}
+
+{% block content %}
+
+<ul class="breadcrumb">
+    <li><a href="{{path('stock_dashboard')}}">Home</a> <span class="divider">/</span></li>
+    <li><a href="{{path('stock_category')}}">Category list</a> <span class="divider">/</span></li>
+    <li class="active">Category creation</li>
+</ul>
+
+<form action="{{ path('stock_category_create') }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
+    {{ form_widget(form) }}
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+</form>
+
+{% endblock content %}

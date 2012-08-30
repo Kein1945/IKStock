@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>{% block page_title %}!set value of page_title block{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Le styles -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    {% stylesheets '@IKDesignBundle/Resources/public/bootstrap/css/bootstrap.min.css'
+        '@IKDesignBundle/Resources/public/bootstrap/css/bootstrap-responsive.css'
+        '@IKDesignBundle/Resources/public/google/prettify.css'%}
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    {% block stylesheets %}{% endblock %}
+    {% javascripts '@IKDesignBundle/Resources/public/jquery/jquery.min.js' %}
+        {# http://html5shim.googlecode.com/svn/trunk/html5.js #}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    {% javascripts '@IKDesignBundle/Resources/public/google/html5.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <![endif]-->
+</head>
+<body>
+{% block body %}{% endblock %}
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+{#<script src="/vendors/bootstrap/js/bootstrap-transition.js"></script>#}
+{#<script src="/vendors/bootstrap/js/bootstrap-alert.js"></script>#}
+{#<script src="/vendors/bootstrap/js/bootstrap-modal.js"></script>#}
+{#<script src="/vendors/bootstrap/js/bootstrap-dropdown.js"></script>#}
+{#<script src="/vendors/bootstrap/js/bootstrap-scrollspy.js"></script>#}
+{#<script src="/vendors/bootstrap/js/bootstrap-tab.js"></script>#}
+{#<script src="/vendors/bootstrap/js/bootstrap-tooltip.js"></script>#}
+{#<script src="/vendors/bootstrap/js/bootstrap-popover.js"></script>#}
+{#<script src="/vendors/bootstrap/js/bootstrap-button.js"></script>#}
+{#<script src="/vendors/bootstrap/js/bootstrap-collapse.js"></script>#}
+{#<script src="/vendors/bootstrap/js/bootstrap-carousel.js"></script>#}
+{#<script src="/vendors/bootstrap/js/bootstrap-typeahead.js"></script>#}
+
+{% block javascripts %}{% endblock %}
+</body>
+</html>

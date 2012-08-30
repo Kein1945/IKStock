@@ -1,0 +1,8 @@
+{% extends 'IKStockBundle::base.html.twig' %}
+
+{% block content_container %}
+    {% include 'IKStockBundle::navigation.html.twig' %}
+    <div class="container-fluid">
+        {% block content %}This is content from IKStockBundle::fluid.html.twig{% endblock content %}
+    </div>
+{% endblock content_container %}

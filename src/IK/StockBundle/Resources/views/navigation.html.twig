@@ -1,0 +1,16 @@
+{% set menu = {
+    "stock_dashboard"   : "Home",
+    "stock_category"    : "Categories",
+    "stock_product"    : "Products"
+}%}
+
+<div class="navbar">
+    <div class="navbar-inner">
+        <a class="brand" href="{{path('stock_dashboard')}}">Dashboard</a>
+        <ul class="nav">
+            {% for route_name, title in menu %}
+                <li{% if route_name in app.request.attributes.get('_route')%} class="active"{% endif %}><a href="{{path(route_name)}}" title="{{title}}">{{title}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

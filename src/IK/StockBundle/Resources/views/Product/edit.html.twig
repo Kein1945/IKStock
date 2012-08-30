@@ -1,0 +1,32 @@
+{% extends 'IKStockBundle::fluid.html.twig' %}
+
+{% block page_title %}
+Edit &laquo;{{entity.article}}&raquo; product / &laquo;{{category.name}}&raquo; / Stock
+{% endblock page_title %}
+
+{% block content %}
+
+<ul class="breadcrumb">
+    <li><a href="{{path('stock_dashboard')}}">Home</a> <span class="divider">/</span></li>
+    <li><a href="{{path('stock_category')}}">Category list</a> <span class="divider">/</span></li>
+    <li><a href="{{path('stock_category_show', {id: category.id})}}">&laquo;{{category.name}}&raquo;</a> <span class="divider">/</span></li>
+    <li><a href="{{path('stock_product_by_category', {id: category.id})}}">Product list</a> <span class="divider">/</span></li>
+    <li><a href="{{path('stock_product_show', {id: entity.id})}}">&laquo;{{entity.article}}&raquo;</a> <span class="divider">/</span></li>
+    <li class="active">Edit</li>
+</ul>
+
+<div class="btn-group">
+    <form action="{{ path('stock_product_delete', { 'id': entity.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+        <button type="submit" class="btn">Delete</button>
+    </form>
+</div>
+
+<form action="{{ path('stock_product_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }} class="form-horizontal">
+    {{ form_widget(edit_form) }}
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Edit</button>
+    </div>
+</form>
+
+{% endblock %}

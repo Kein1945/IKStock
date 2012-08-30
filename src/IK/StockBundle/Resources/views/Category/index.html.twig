@@ -1,0 +1,49 @@
+{% extends 'IKStockBundle::fluid.html.twig' %}
+
+{% block page_title %}
+    Category list / Stock
+{% endblock page_title %}
+
+{% block content %}
+
+<div class="btn-toolbar">
+    <a href="{{ path('stock_category_new') }}" class="btn">
+        Create new
+    </a>
+</div>
+
+<ul>
+    {% for entity in entities %}
+        {%if not entity.parent %}
+            {% include 'IKStockBundle:Category:list-item.html.twig' with {category: entity}%}
+        {% endif %}
+    {% endfor %}
+</ul>
+
+{#<table class="records_list table">#}
+    {#<thead>#}
+        {#<tr>#}
+            {#<th>Name</th>#}
+            {#<th>Actions</th>#}
+        {#</tr>#}
+    {#</thead>#}
+    {#<tbody>#}
+    {#{% for entity in entities %}#}
+        {#<tr>#}
+            {#<td><a href="{{ path('stock_category_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>#}
+            {#<td>#}
+                {#<ul>#}
+                    {#<li>#}
+                        {#<a href="{{ path('stock_category_show', { 'id': entity.id }) }}">show</a>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<a href="{{ path('stock_category_edit', { 'id': entity.id }) }}">edit</a>#}
+                    {#</li>#}
+                {#</ul>#}
+            {#</td>#}
+        {#</tr>#}
+    {#{% endfor %}#}
+    {#</tbody>#}
+{#</table>#}
+
+{% endblock content %}

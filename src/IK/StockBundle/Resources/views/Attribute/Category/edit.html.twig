@@ -1,0 +1,31 @@
+{% extends 'IKStockBundle::fluid.html.twig' %}
+
+{% block page_title %}
+New Attribute / &laquo;{{category.name}}&raquo; category / Stock
+{% endblock page_title %}
+
+{% block content %}
+
+<ul class="breadcrumb">
+    <li><a href="{{path('stock_dashboard')}}">Home</a> <span class="divider">/</span></li>
+    <li><a href="{{path('stock_category')}}">Category list</a> <span class="divider">/</span></li>
+    <li class="active"><a href="{{  path('stock_category_show', { 'id': category.id }) }}">&laquo;{{category}}&raquo;</a> <span class="divider">/</span></li>
+    <li class="active">New attribute</li>
+</ul>
+
+
+<div class="btn-group">
+    <form action="{{ path('stock_category_attribute_delete', { 'id': entity.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+        <button type="submit" class="btn">Delete</button>
+    </form>
+</div>
+
+<form action="{{ path('stock_category_attribute_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }} class="form-horizontal">
+    {{ form_widget(edit_form) }}
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Edit</button>
+    </div>
+</form>
+
+{% endblock content %}

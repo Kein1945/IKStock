@@ -1,0 +1,72 @@
+{% extends 'IKStockBundle::fluid.html.twig' %}
+
+{% block page_title %}
+&laquo;{{entity}}&raquo; category / Stock
+{% endblock page_title %}
+
+{% block content %}
+
+<ul class="breadcrumb">
+    <li><a href="{{path('stock_dashboard')}}">Home</a> <span class="divider">/</span></li>
+    <li><a href="{{path('stock_category')}}">Category list</a> <span class="divider">/</span></li>
+    <li class="active">&laquo;{{entity}}&raquo;</li>
+</ul>
+
+<div class="btn-toolbar">
+    <a href="{{ path('stock_category_edit', { 'id': entity.id }) }}" class="btn">
+        Edit
+    </a>
+    <form action="{{ path('stock_category_delete', { 'id': entity.id }) }}" method="post" style="display:inline-block;">
+        {{ form_widget(delete_form) }}
+        <button type="submit" class="btn">Delete</button>
+    </form>
+</div>
+
+<table class="record_properties table">
+    <tbody>
+        <tr>
+            <th>Name</th>
+            <td>{{ entity.name }}</td>
+        </tr>
+        <tr>
+            <th>Parent</th>
+            <td>
+                {% if entity.parent %}
+                <a href="{{path('stock_category_show', {id: entity.parent.id})}}">{{ entity.parent }}</a>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Children</th>
+            <td>
+                <ul>
+                    {% for child in entity.children %}
+                    <li><a href="{{path('stock_category_show', {id: child.id})}}">{{ child }}</a></li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Attributes</th>
+            <td>
+                <ul>
+                    {% for attribute in entity.attributes %}
+                    <li><a href="{{path('stock_category_attribute_edit', {id: attribute.id})}}">{{ attribute.name }}</a> {%if attribute.required %}*{% endif %}</li>
+                    {% endfor %}
+                    <li><a href="{{path('stock_category_attribute_new', {id:entity.id})}}">New attribute</a></li>
+                </ul>
+            </td>
+        </tr>
+    <tr>
+        <th>Products</th>
+        <td>
+            <ul>
+                <li><a href="{{path('stock_product_by_category', {id: entity.id})}}">Show all products</a></li>
+                <li><a href="{{path('stock_product_new', {id: entity.id})}}">New product</a></li>
+            </ul>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+{% endblock content %}

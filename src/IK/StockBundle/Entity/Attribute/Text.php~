@@ -1,0 +1,38 @@
+<?php
+
+namespace IK\StockBundle\Entity\Attribute;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ */
+class Text extends Base {
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $textValue;
+
+    /**
+     * Set textValue
+     *
+     * @param string $textValue
+     * @return Text
+     */
+    public function setTextValue($textValue)
+    {
+        $this->textValue = $textValue;
+    
+        return $this;
+    }
+
+    /**
+     * Get textValue
+     *
+     * @return string 
+     */
+    public function getTextValue()
+    {
+        return $this->textValue;
+    }
+}

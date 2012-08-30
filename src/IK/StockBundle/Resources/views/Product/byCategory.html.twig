@@ -1,0 +1,48 @@
+{% extends 'IKStockBundle::fluid.html.twig' %}
+
+{% block page_title %}
+Product list / &laquo;{{category.name}}&raquo; / Stock
+{% endblock page_title %}
+
+{% block content %}
+
+<ul class="breadcrumb">
+    <li><a href="{{path('stock_dashboard')}}">Home</a> <span class="divider">/</span></li>
+    <li><a href="{{path('stock_category')}}">Category list</a> <span class="divider">/</span></li>
+    <li><a href="{{path('stock_category_show', {id: category.id})}}">&laquo;{{category.name}}&raquo;</a> <span class="divider">/</span></li>
+    <li class="active">Product list</li>
+</ul>
+
+
+<div class="btn-group">
+    <a href="{{path('stock_product_new', {id: category.id})}}" class="btn">New product</a></li>
+</div>
+
+<table class="records_list table">
+    <thead>
+    <tr>
+        <th>Article</th>
+        <th>Name</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+    <tr>
+        <td><a href="{{ path('stock_product_show', { 'id': entity.id }) }}">{{ entity.article }}</a></td>
+        <td>{{ entity.name }}</td>
+        <td>
+            <ul>
+                <li>
+                    <a href="{{ path('stock_product_show', { 'id': entity.id }) }}">show</a>
+                </li>
+                <li>
+                    <a href="{{ path('stock_product_edit', { 'id': entity.id }) }}">edit</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

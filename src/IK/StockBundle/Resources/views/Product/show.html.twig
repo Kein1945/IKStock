@@ -1,0 +1,54 @@
+{% extends 'IKStockBundle::fluid.html.twig' %}
+
+{% block page_title %}
+&laquo;{{entity.article}}&raquo; product / &laquo;{{category.name}}&raquo; / Stock
+{% endblock page_title %}
+
+{% block content %}
+
+<ul class="breadcrumb">
+    <li><a href="{{path('stock_dashboard')}}">Home</a> <span class="divider">/</span></li>
+    <li><a href="{{path('stock_category')}}">Category list</a> <span class="divider">/</span></li>
+    <li><a href="{{path('stock_category_show', {id: category.id})}}">&laquo;{{category.name}}&raquo;</a> <span class="divider">/</span></li>
+    <li><a href="{{path('stock_product_by_category', {id: category.id})}}">Product list</a> <span class="divider">/</span></li>
+    <li class="active">&laquo;{{entity.article}}&raquo;</li>
+</ul>
+
+<div class="btn-toolbar">
+    <a href="{{ path('stock_product_edit', { 'id': entity.id }) }}" class="btn">
+        Edit
+    </a>
+    <form action="{{ path('stock_product_delete', { 'id': entity.id }) }}" method="post" style="display:inline-block;">
+        {{ form_widget(delete_form) }}
+        <button type="submit" class="btn">Delete</button>
+    </form>
+</div>
+
+
+<table class="record_properties table">
+    <tbody>
+        <tr>
+            <th>Article</th>
+            <td>{{ entity.article }}</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{ entity.name }}</td>
+        </tr>
+        <tr>
+            <th>Quantity</th>
+            <td>{{entity.quantity}}</td>
+        </tr>
+        <tr>
+            <th>Updated</th>
+            <td>{{entity.updatedat|date('d-M-Y')}}</td>
+        </tr>
+    {% for extension in entity.extensions %}
+        <tr>
+            <th>{{extension.category.name}}</th>
+            <td>{{extension.data}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

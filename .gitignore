@@ -1,0 +1,26 @@
+
+app/bootstrap.php.cache
+app/cache/*
+app/logs/*
+bin
+LICENSE
+UPGRADE.md
+# Bootstrap
+app/bootstrap*
+
+# Symfony directories
+vendor/*
+*/logs/*
+*/cache/*
+web/uploads/*
+web/bundles/*
+
+# Configuration files
+app/config/parameters.ini
+
+# Composer
+composer.phar
+composer.lock
+
+# ide
+.idea
