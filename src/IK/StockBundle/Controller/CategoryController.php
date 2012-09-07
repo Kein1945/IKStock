@@ -92,6 +92,15 @@ class CategoryController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            if(null!=$entity->getParent()){
+                foreach($entity->getParent()->getAttributes() as $attribute){
+                    //$new_attribute = clone $attribute;
+                    //$attribute->setId(null);
+                    $new_attribute = clone $attribute;
+                    $new_attribute->setCategory($entity);
+                    $entity->addAttribute($new_attribute);
+                }
+            }
             $em->persist($entity);
             $em->flush();
 

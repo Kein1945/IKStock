@@ -32,7 +32,7 @@ class Category {
     protected $children;
 
     /**
-     * @ORM\OneToMany(targetEntity="IK\StockBundle\Entity\Attribute\Category", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="IK\StockBundle\Entity\Attribute\Category", mappedBy="category", cascade={"all"})
      */
     protected $attributes;
 
