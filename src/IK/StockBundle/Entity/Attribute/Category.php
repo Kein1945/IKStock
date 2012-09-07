@@ -29,6 +29,15 @@ class Category {
     private $required;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $filterable = false;
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $sortable = false;
+
+    /**
      * @ORM\Column(type="attributeextensiontype", name="extension")
      */
     private $extension;
@@ -145,5 +154,51 @@ class Category {
     public function getExtension()
     {
         return $this->extension;
+    }
+
+    /**
+     * Set filterable
+     *
+     * @param boolean $filterable
+     * @return Category
+     */
+    public function setFilterable($filterable)
+    {
+        $this->filterable = $filterable;
+    
+        return $this;
+    }
+
+    /**
+     * Get filterable
+     *
+     * @return boolean 
+     */
+    public function getFilterable()
+    {
+        return $this->filterable;
+    }
+
+    /**
+     * Set sortable
+     *
+     * @param boolean $sortable
+     * @return Category
+     */
+    public function setSortable($sortable)
+    {
+        $this->sortable = $sortable;
+    
+        return $this;
+    }
+
+    /**
+     * Get sortable
+     *
+     * @return boolean 
+     */
+    public function getSortable()
+    {
+        return $this->sortable;
     }
 }

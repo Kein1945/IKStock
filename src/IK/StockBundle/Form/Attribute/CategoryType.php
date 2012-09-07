@@ -19,6 +19,14 @@ class CategoryType extends AbstractType
                 'label' => 'Required',
                 'required' => false
             ))
+            ->add('filterable', null, array(
+                'label' => 'Filterable',
+                'required' => false
+            ))
+            ->add('sortable', null, array(
+                'label' => 'Sortable',
+                'required' => false
+            ))
             ->add('extension', 'choice', array(
                 'choices' => ExtensionType::getListOfTypes(),
                 'label' => 'Extension'
