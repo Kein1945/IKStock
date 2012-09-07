@@ -40,7 +40,7 @@ class Value {
     private $category_id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="IK\StockBundle\Entity\Product")
+     * @ORM\ManyToOne(targetEntity="IK\StockBundle\Entity\Product", cascade={"all"})
      */
     private $product;
 
@@ -49,7 +49,7 @@ class Value {
      * @ORM\PrePersist
      */
     public function prePersist(){
-        $this->product->updateAttributes();
+        //$this->product->updateAttributes();
     }
 
     // Generated methods

@@ -124,6 +124,7 @@ class Product {
 
     /**
      * @ORM\PrePersist
+     * @ORM\PreUpdate
      */
     public function updateAttributes(){
         $this->setUpdatedAt(\time());
