@@ -43,6 +43,9 @@
                     {% for child in entity.children %}
                     <li><a href="{{path('stock_category_show', {id: child.id})}}">{{ child }}</a></li>
                     {% endfor %}
+                    <li><a href="{{ path('stock_category_new', { 'id': entity.id }) }}">
+                        New child
+                    </a></li>
                 </ul>
             </td>
         </tr>

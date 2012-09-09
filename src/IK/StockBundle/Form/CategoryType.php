@@ -14,10 +14,6 @@ class CategoryType extends AbstractType
             ->add('name', null, array(
                 'label' => 'Name'
             ))
-            ->add('parent', null, array(
-                'label' => 'Parent category',
-                'required' => false
-            ))
         ;
     }
 

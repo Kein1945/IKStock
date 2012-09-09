@@ -63,12 +63,21 @@ class CategoryController extends Controller
     /**
      * Displays a form to create a new Category entity.
      *
-     * @Route("/new", name="stock_category_new")
+     * @Route("/new/{id}", name="stock_category_new", defaults={"id" = null})
      * @Template()
      */
-    public function newAction()
+    public function newAction($id = null)
     {
         $entity = new Category();
+        if(!is_null($id)){
+            $em = $this->getDoctrine()->getManager();
+
+            $parent = $em->getRepository('IKStockBundle:Category')->find($id);
+            if (!$parent) {
+                throw $this->createNotFoundException('Unable to find Category entity.');
+            }
+            $entity->setParent($parent);
+        }
         $form   = $this->createForm(new CategoryType(), $entity);
 
         return array(
@@ -80,13 +89,22 @@ class CategoryController extends Controller
     /**
      * Creates a new Category entity.
      *
-     * @Route("/create", name="stock_category_create")
+     * @Route("/create/{id}", name="stock_category_create", defaults={"id" = null})
      * @Method("POST")
      * @Template("IKStockBundle:Category:new.html.twig")
      */
-    public function createAction(Request $request)
+    public function createAction(Request $request, $id=null)
     {
         $entity  = new Category();
+        if(!is_null($id)){
+            $em = $this->getDoctrine()->getManager();
+
+            $parent = $em->getRepository('IKStockBundle:Category')->find($id);
+            if (!$parent) {
+                throw $this->createNotFoundException('Unable to find Category entity.');
+            }
+            $entity->setParent($parent);
+        }
         $form = $this->createForm(new CategoryType(), $entity);
         $form->bind($request);
 
@@ -94,8 +112,6 @@ class CategoryController extends Controller
             $em = $this->getDoctrine()->getManager();
             if(null!=$entity->getParent()){
                 foreach($entity->getParent()->getAttributes() as $attribute){
-                    //$new_attribute = clone $attribute;
-                    //$attribute->setId(null);
                     $new_attribute = clone $attribute;
                     $new_attribute->setCategory($entity);
                     $entity->addAttribute($new_attribute);

@@ -12,7 +12,7 @@ Category creation / Stock
     <li class="active">Category creation</li>
 </ul>
 
-<form action="{{ path('stock_category_create') }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
+<form action="{{ path('stock_category_create', {id: entity.parent.id}) }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
     {{ form_widget(form) }}
     <div class="form-actions">
         <button type="submit" class="btn btn-primary">Create</button>
