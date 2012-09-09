@@ -27,7 +27,7 @@ class Category {
     protected $parent;
 
     /**
-     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent")
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent", cascade={"remove"})
      */
     protected $children;
 
@@ -37,7 +37,7 @@ class Category {
     protected $attributes;
 
     /**
-     * @ORM\OneToMany(targetEntity="IK\StockBundle\Entity\Product", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="IK\StockBundle\Entity\Product", mappedBy="category", cascade={"remove"})
      */
     protected $products;
 

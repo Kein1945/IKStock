@@ -39,7 +39,7 @@ class Product {
     private $updatedAt;
 
     /**
-     * @ORM\OneToMany(targetEntity="IK\StockBundle\Entity\Attribute\Value", mappedBy="product", cascade={"persist","refresh"})
+     * @ORM\OneToMany(targetEntity="IK\StockBundle\Entity\Attribute\Value", mappedBy="product", cascade={"persist","refresh","remove"})
      */
     protected $attributes;
 
