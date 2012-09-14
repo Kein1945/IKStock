@@ -10,6 +10,7 @@ use IK\StockBundle\Entity\Attribute\Category as AttributeCategory;
 /**
  * @ORM\Entity
  * @ORM\Table(name="category")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Category {
 
@@ -46,6 +47,11 @@ class Category {
      */
     protected $name;
 
+    /**
+     * @ORM\Column(type="string", length=64, unique=true)
+     */
+    protected $slug;
+
     public function __construct(){
         $this->children = new ArrayCollection();
         $this->attributes = new ArrayCollection();
@@ -53,6 +59,19 @@ class Category {
 
     public function __toString(){
         return $this->name;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Category
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = trim( preg_replace('/([^a-zA-Z0-9])/i','-', strtolower($slug) ), '-' );
+
+        return $this;
     }
 
     // Generated function
@@ -210,5 +229,15 @@ class Category {
     public function getProducts()
     {
         return $this->products;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

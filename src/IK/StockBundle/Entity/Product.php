@@ -61,7 +61,7 @@ class Product {
     /**
      * Set category
      *
-     * @param IK\StockBundle\Entity\Category $category
+     * @param \IK\StockBundle\Entity\Category $category
      * @return Product
      */
     public function setCategory(\IK\StockBundle\Entity\Category $category = null)
@@ -109,8 +109,8 @@ class Product {
         foreach($this->category->getAttributes() as $category_attribute){
             $extension = $category_attribute->getExtensionInstance();
             $this->addExtension( $extension );
+            $exists = false;
             foreach($this->getAttributes() as $attribute){
-                $exists = false;
                 if($category_attribute->getId() == $attribute->getCategoryId()){
                     $extension->setValue($attribute);
                     $exists = true;
@@ -217,7 +217,7 @@ class Product {
     /**
      * Get attributes
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAttributes()
     {
@@ -227,7 +227,7 @@ class Product {
     /**
      * Get category
      *
-     * @return IK\StockBundle\Entity\Category 
+     * @return \IK\StockBundle\Entity\Category
      */
     public function getCategory()
     {

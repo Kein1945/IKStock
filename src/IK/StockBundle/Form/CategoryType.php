@@ -14,6 +14,9 @@ class CategoryType extends AbstractType
             ->add('name', null, array(
                 'label' => 'Name'
             ))
+            ->add('slug', null, array(
+                'label' => 'Seo slug'
+            ))
         ;
     }
 
